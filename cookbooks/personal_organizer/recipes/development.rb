@@ -25,5 +25,9 @@ rbenv_gem 'install bundler with rbenv for user vagrant' do
   action :install
 end
 
+#execute "set ruby 1.9.3-p194 as global ruby version" do
+  #command 'rbenv global 1.9.3-p194'
+#end
+
 package 'libxslt-dev'
 package 'libxml2-dev'

@@ -27,6 +27,16 @@ Then to access this machine through ssh execute
 vagrant ssh
 ```
 
+and the first time you enter the VM, you have to run:
+
+```
+rbenv global 1.9.3-p194
+cd /personal_organizer
+bundle install
+rbenv rehash
+```
+that sets your system ruby version as 1.9.3 (instead of the default linux's 1.8.7 version)
+
 So, to run the rails server inside de VM
 
 ```
