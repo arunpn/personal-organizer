@@ -31,3 +31,14 @@ end
 
 package 'libxslt-dev'
 package 'libxml2-dev'
+
+script "install phantom js 1.6.1" do
+  interpreter "bash"
+  user "root"
+  cwd "/home/vagrant"
+  code <<-EOH
+  wget http://phantomjs.googlecode.com/files/phantomjs-1.6.1-linux-x86_64-dynamic.tar.bz2
+  tar xvjf phantomjs-1.6.1-linux-x86_64-dynamic.tar.bz2 -C /usr/local
+  ln -s /usr/local/phantomjs-1.6.1-linux-x86_64-dynamic/bin/phantomjs /usr/local/bin/phantomjs
+  EOH
+end

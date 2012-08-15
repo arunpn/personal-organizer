@@ -56,3 +56,13 @@ vagrant halt
 ## TODO:
 
 * create a new user for MySQL with less privileges
+
+
+## Setup
+  rails g rspec:install
+  
+  
+  # spec\_helper.rb
+  require 'capybara/rspec' 
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist 
