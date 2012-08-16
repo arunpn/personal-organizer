@@ -11,10 +11,12 @@ development:
   database: front_development
   <<: *defaults
   
-test:
+test: &test
   database: front_test
   <<: *defaults
   
 production:
   database: front_production
   <<: *defaults
+cucumber:
+  <<: *test
