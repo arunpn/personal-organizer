@@ -8,13 +8,16 @@ defaults: &defaults
   host: localhost
 
 development:  
-  database: front_development
+  database: perorg_development
   <<: *defaults
   
-test:
-  database: front_test
+test: &test
+  database: perorg_test
   <<: *defaults
   
 production:
-  database: front_production
+  database: perorg_production
   <<: *defaults
+  
+cucumber:
+  <<: *test

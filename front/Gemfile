@@ -17,10 +17,14 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'brakeman'
 end
 
 group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'poltergeist'
   gem 'factory_girl_rails'
+  gem 'spork'
 end

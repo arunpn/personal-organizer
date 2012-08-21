@@ -36,6 +36,7 @@ script "install phantom js 1.6.1" do
   interpreter "bash"
   user "root"
   cwd "/home/vagrant"
+  not_if { File.exists?("/usr/local/bin/phantomjs") }
   code <<-EOH
   wget http://phantomjs.googlecode.com/files/phantomjs-1.6.1-linux-x86_64-dynamic.tar.bz2
   tar xvjf phantomjs-1.6.1-linux-x86_64-dynamic.tar.bz2 -C /usr/local
