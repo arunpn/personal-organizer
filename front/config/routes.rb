@@ -1,8 +1,9 @@
 Front::Application.routes.draw do
   get "welcome/index"
-  get 'main/index'
 
   devise_for :users
+
+  resources :accounts, only: [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

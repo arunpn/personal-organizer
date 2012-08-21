@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span6">
-    <div>
+    <div class="welcome_message">
       Personal Organizer is a tool to keet track of your expenses and enables you to
       know where does your money go each month and how I can improve my money management
       according to my own situation and historical data
@@ -10,14 +10,14 @@
     <%= image_tag 'finances.jpeg', class: 'welcome_image' %>
   </div>
   <div class="span6">
-    <h2>Sign in</h2>
-    <%= form_for("user", :url => user_session_path) do |f| %>
-      <%= f.text_field :email %><br/>
-      <%= f.password_field :password %><br/>
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %><br/>
-      <%= f.submit 'Sign in', class: 'btn' %><br/>
-      <%= link_to "Forgot your password?", new_password_path('user') %>
-    <% end %>
+    <div id="sign_up" class="well">
+      <h2>Sign Up</h2>
+      <%= simple_form_for("user", url: user_registration_path, html: { class: 'form-horizontal' }) do |f| %>
+        <%= f.input :email, type: :email %>
+        <%= f.input :password, type: :password %>
+        <%= f.input :password_confirmation, type: :password %>
+        <%= f.button :submit, 'Sign up', class: 'btn-large' %>
+      <% end %>
+    </div>
   </div>
 </div>
