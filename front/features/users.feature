@@ -10,6 +10,7 @@ Feature: Users feature
 
   Scenario: Sign In
     Given I have my user in the system
+    And I am on the welcome page
     When I go to the login page
     And I log in with my email and password
     Then I am on my main page
