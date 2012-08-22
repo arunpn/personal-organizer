@@ -19,6 +19,27 @@ class AccountsController < ApplicationController
     end
   end
 
+  def edit
+    @account = Account.find(params[:id])
+  end
+
+  def update
+    @account = Account.find(params[:id])
+    if @account.update_attributes(params[:account])
+      flash[:notice] = "Account updated successfully"
+      redirect_to accounts_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @account = Account.find(params[:id])
+    @account.destroy
+    flash[:notice] = "Account successfully destroyed."
+    redirect_to accounts_path
+  end
+
 private
 
   def accounts
