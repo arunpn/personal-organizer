@@ -12,9 +12,20 @@
 </head>
 <body>
   <%= render 'layouts/nav_bar' %>
+
   <div class="container">
     <%= render 'layouts/notifications' %>
-    <%= yield %>
+
+    <div class="row">
+      <div class="span4">
+        <%= render 'accounts/accounts' %>
+      </div>
+
+      <div class="span8">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 </html>
+

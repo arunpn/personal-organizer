@@ -7,3 +7,8 @@ $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
 body { padding-top: 60px; }
 
 @import "bootstrap-responsive";
+
+.navbar .brand {
+  color: white;
+  font-size: 2.2em;
+}

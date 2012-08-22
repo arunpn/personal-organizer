@@ -56,3 +56,5 @@ vagrant halt
 ## TODO:
 
 * create a new user for MySQL with less privileges
+
+rails g controller accounts index --no-helper --no-assets --no-view-specs
