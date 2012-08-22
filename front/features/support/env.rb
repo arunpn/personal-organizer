@@ -15,6 +15,8 @@ Spork.prefork do
   # files.
 
   require 'cucumber/rails'
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist
 
 
   include FactoryGirl::Syntax::Methods

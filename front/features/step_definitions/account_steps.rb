@@ -8,6 +8,29 @@ When /^I create an account with name "(.*?)" and a initial balance of "(.*?)"$/ 
   click_button "Create Account"
 end
 
+When /^I click to delete my account$/ do
+  within ".account" do
+    click_link "delete"
+  end
+end
+
+When /^I click "(.*?)" on the delete confirmation dialog$/ do |name|
+  sleep 2
+  within ".delete_confirmation" do
+    click_link name
+  end
+end
+
+Then /^my account and its transactions no longer exists$/ do
+  Account.count.should == 0
+  #TODO: pending include transactions
+end
+
+Then /^my account and its transactions still exists$/ do
+  Account.count.should_not == 0
+  #TODO: pending include transactions
+end
+
 Then /^I should see my account's name and its current balance of "(.*?)"$/ do |current_balance|
   account = Account.last
   step %Q{I should see "#{account.name}"}

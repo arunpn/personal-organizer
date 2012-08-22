@@ -10,6 +10,20 @@
         <span class="name"><%= account.name %></span>
         <span class="current_balance"><%= account.current_balance %></span>
         <%= link_to "edit", edit_account_path(account) %>
+        <%= link_to "delete", '#', :'data-toggle' => 'modal', :'data-target' => "#delete_account_#{account.id}" %>
+        <div id="delete_account_<%= account.id %>" class="delete_confirmation modal hide fade">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Are you sure to delete the account?</h3>
+          </div>
+          <div class="modal-body">
+            <p>Your account and all its transactions will be lost forever.</p>
+          </div>
+          <div class="modal-footer">
+            <%= link_to "Cancel", '#', class: "btn", :'data-dismiss' => "modal" %>
+            <%= link_to "Confirm", account_path(account), method: :delete, class: "btn btn-primary" %>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>
