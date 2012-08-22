@@ -18,7 +18,6 @@ Feature: Accounts
     Then I can edit my account and change its name for "checking"
     And I am on the accounts page
 
-  @wip
   @javascript
   Scenario: Deleting an account
     Given I have an account named "wallet"
@@ -29,7 +28,6 @@ Feature: Accounts
     When I click "Confirm" on the delete confirmation dialog
     Then my account and its transactions no longer exists
 
-  @wip
   @javascript
   Scenario: Desisting to delete an Account
     Given I have an account named "wallet"
