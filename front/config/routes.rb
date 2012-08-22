@@ -3,7 +3,7 @@ Front::Application.routes.draw do
 
   devise_for :users
 
-  resources :accounts, only: [:index, :new, :create]
+  resources :accounts, only: [:index, :new, :create, :edit, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

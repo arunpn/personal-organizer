@@ -1,7 +1,3 @@
 <h1>New Account</h1>
 
-<%= simple_form_for @account do |f| %>
-  <%= f.input :name %>
-  <%= f.input :initial_balance, type: :number %>
-  <%= f.button :submit, 'Create Account' %>
-<% end %>
+<%= render 'accounts/form', object: @account, button_label: 'Create Account' %>
