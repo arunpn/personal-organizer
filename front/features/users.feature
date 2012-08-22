@@ -1,4 +1,3 @@
-@wip
 Feature: Users feature
   In order to have my identity on the system
   As an user to want to use the system
