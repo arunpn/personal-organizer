@@ -1,0 +1,15 @@
+<nav class="well">
+  <h2>Accounts</h2>
+  <%= link_to "Add Account", new_account_path, class: "btn-primary btn-small pull-right" %>
+
+  <% if @accounts.empty? %>
+    <span>No accounts yet, you <%= link_to 'should create one', new_account_path %></span>
+  <% else %>
+    <% @accounts.each do |account| %>
+      <div>
+        <span class="name"><%= account.name %></span>
+        <span class="current_balance"><%= account.current_balance %></span>
+      </div>
+    <% end %>
+  <% end %>
+</nav>

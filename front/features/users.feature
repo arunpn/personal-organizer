@@ -1,4 +1,3 @@
-@wip
 Feature: Users feature
   In order to have my identity on the system
   As an user to want to use the system
@@ -14,4 +13,3 @@ Feature: Users feature
     And I am on the welcome page
     When I login with my email and password
     Then I should be on my accounts page
-    And I should see the message "no accounts yet"

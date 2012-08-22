@@ -2,6 +2,12 @@ Given /^I have my user in the system$/ do
   @user = create(:user)
 end
 
+Given /^I am a logged user$/ do
+  step "I have my user in the system"
+  step "I go to the welcome page"
+  step "I login with my email and password"
+end
+
 When /^I register an user with my email and password$/ do
   user = build(:user)
   within "#sign_up" do
@@ -23,9 +29,3 @@ end
 Then /^there is my user in the system$/ do
   User.count.should_not == 0
 end
-
-#Given /^I am a logged user$/ do
-  #step "I have my user in the system"
-  #step "I go to the login page"
-  #step "I log in with my email and password"
-#end
