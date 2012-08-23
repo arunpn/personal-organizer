@@ -19,6 +19,9 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'guard-spork'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
   gem 'brakeman'
 end
 
