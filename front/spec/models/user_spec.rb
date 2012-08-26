@@ -3,7 +3,7 @@ require  'spec_helper'
 describe User do
   it { should have_many(:accounts) }
 
-  describe "#new_account", :wip do
+  describe "#new_account" do
     subject { create(:user) }
     
     it "creates a new account for the user" do
