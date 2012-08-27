@@ -2,10 +2,12 @@ Feature: Transactions
   In order to keep tracking of my money transactions
   As a registered user
   I want to add them in bulk, edit, list and delete them
-
-  Scenario: Add daily transactions
+  
+  Background:
     Given I am a logged user
     And I have an account with an initial balance of 3000
+
+  Scenario: Add daily transactions
     And I am on my account page
     When I click the add transactions button
     And I create the transactions
@@ -19,9 +21,7 @@ Feature: Transactions
 
   @javascript
   Scenario: Add daily transactions (Adding Extra Transactions)
-    Given I am a logged user
-    And I have an account with an initial balance of 3000
-    And I am on my account page
+    Given I am on my account page
     When I click the add transactions button
     And I create the transactions
       | name              | amount | description                    |
@@ -39,9 +39,7 @@ Feature: Transactions
     pending
 
   Scenario: Add daily transactions with some errors
-    Given I am a logged user
-    And I have an account with an initial balance of 3000
-    And I am on my account page
+    Given I am on my account page
     When I click the add transactions button
     And I create the transactions
       | name            | amount | description              |
@@ -56,9 +54,10 @@ Feature: Transactions
     And I should have 1 transaction in my account
     And the account current balance is 1000
 
-    
   Scenario: Listing transactions
-    pending
+    Given I have 3 transactions in my account
+    When I am on my account page
+    Then I can see the list of my 3 account transactions
     
   Scenario: Edit transaction
     pending

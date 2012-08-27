@@ -1,3 +1,7 @@
+Given /^I have (\d+) transactions in my account$/ do |transactions_number|
+  transactions_number.to_i.times { create(:transaction, account: @account) }
+end
+
 When /^I click the add transactions button$/ do
   click_link "Add Transactions"
 end
@@ -26,4 +30,12 @@ Then /^I should see the wrong transactions$/ do |table|
       page.body.should_match(/#{value}/) unless value.empty?
     end
   end
+end
+
+Then /^I can see the list of my (\d+) account transactions$/ do |transactions_number|
+  @account.transactions.each do |transaction|
+    step %Q{I should see "#{transaction.name}"}
+    step %Q{I should see "#{number_to_currency(transaction.amount)}"}
+  end
+  step %Q{I should have #{transactions_number} transactions in my account}
 end
