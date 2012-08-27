@@ -20,19 +20,19 @@ end
 
 When /^I click "(.*?)" on the delete confirmation dialog$/ do |name|
   sleep 2
-  within ".delete_confirmation" do
+  within ".account" do
     click_link name
   end
 end
 
 Then /^my account and its transactions no longer exists$/ do
   Account.count.should == 0
-  #TODO: pending include transactions
+  Transaction.count.should == 0
 end
 
 Then /^my account and its transactions still exists$/ do
   Account.count.should_not == 0
-  #TODO: pending include transactions
+  Transaction.count.should_not == 0
 end
 
 Then /^I should see my account's name and its current balance of "(.*?)"$/ do |current_balance|

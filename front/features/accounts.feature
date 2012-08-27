@@ -21,6 +21,7 @@ Feature: Accounts
   @javascript
   Scenario: Deleting an account
     Given I have an account named "wallet"
+    And I have 3 transactions in my account
     And I am on the accounts page
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"
@@ -31,6 +32,7 @@ Feature: Accounts
   @javascript
   Scenario: Desisting to delete an Account
     Given I have an account named "wallet"
+    And I have 3 transactions in my account
     And I am on the accounts page
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"
