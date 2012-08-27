@@ -13,23 +13,7 @@
 			<td><%= transaction.name %></td>
 			<td><%= number_to_currency transaction.amount %></td>
 			<td>
-				<!--
-					TODO Extract this into a helper
-				-->
-        <%= link_to "delete", '#', :'data-toggle' => 'modal', :'data-target' => "#delete_transaction_#{transaction.id}", class: 'btn btn-mini btn-danger' %>
-        <div id="delete_transaction_<%= transaction.id %>" class="modal hide fade">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Deleting Transaction</h3>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure to delete this transaction?</p>
-          </div>
-          <div class="modal-footer">
-            <%= link_to "Cancel", '#', class: "btn", :'data-dismiss' => "modal" %>
-            <%= link_to "Confirm", account_transaction_path(@account, transaction), method: :delete, class: "btn btn-primary" %>
-          </div>
-        </div>
+				<%= confirmation_delete_link transaction, account_transaction_path(@account, transaction), "Deleting Transaction", "Are you sure to delete this transaction?" %>
 			</td>
 		</tr>
 	<% end %>
