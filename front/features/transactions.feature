@@ -62,5 +62,12 @@ Feature: Transactions
   Scenario: Edit transaction
     pending
     
+  @javascript
   Scenario: Delete transaction
-    pending
+    Given I have 1 transaction in my account
+    And I am on my account page
+    And the account current balance is not 3000
+    When I click to delete my transaction and confirm
+    Then I should have 0 transactions in my account
+    And I should be on my account page
+    And the account current balance is 3000

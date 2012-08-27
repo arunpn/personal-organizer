@@ -1,4 +1,4 @@
-Given /^I have (\d+) transactions in my account$/ do |transactions_number|
+Given /^I have (\d+) transactions? in my account$/ do |transactions_number|
   transactions_number.to_i.times { create(:transaction, account: @account) }
 end
 
@@ -17,6 +17,14 @@ When /^I create the transactions$/ do |table|
     fill_in "transactions_#{index}_description", with: transaction['description']
   end
   click_button "Create Transactions"
+end
+
+When /^I click to delete my transaction and confirm$/ do
+  within ".transaction" do
+    click_link "delete"
+    sleep 1
+    click_link "Confirm"
+  end
 end
 
 Then /^I should have (\d+) transactions? in my account$/ do |amount|

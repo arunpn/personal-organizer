@@ -52,6 +52,11 @@ Then /^I can edit my account and change its name for "(.*?)"$/ do |name|
   @account.name.should == name
 end
 
-Then /^the account current balance is (-?\d+)$/ do |current_balance|
-  @account.current_balance.should == current_balance.to_f
+Then /^the account current balance is (not )?(-?\d+)$/ do |negation, current_balance|
+  @account.reload
+  if negation.nil?
+    @account.current_balance.should == current_balance.to_f
+  else
+    @account.current_balance.should_not == current_balance.to_f
+  end
 end

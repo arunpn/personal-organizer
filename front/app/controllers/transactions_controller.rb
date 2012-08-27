@@ -40,7 +40,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction = Transaction.find(params[:id])
     @transaction.destroy
-    redirect_to transactions_url
+    redirect_to @account, notice: "Transaction was successfully destroyed."
   end
 
 private
