@@ -45,4 +45,17 @@ describe Account do
       end
     end
   end
+  
+  describe "#destroy" do
+    subject { create(:account) }
+    it "removes the account" do
+      subject.destroy
+      expect { Account.find(subject.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+    it "removes all its transactions" do
+      3.times { create(:transaction, account: subject) }
+      subject.destroy
+      Transaction.where(account_id: subject.id).should be_empty
+    end
+  end
 end

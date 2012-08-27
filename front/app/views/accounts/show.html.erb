@@ -13,6 +13,9 @@
 			<td><%= transaction.name %></td>
 			<td><%= number_to_currency transaction.amount %></td>
 			<td>
+				<!--
+					TODO Extract this into a helper
+				-->
         <%= link_to "delete", '#', :'data-toggle' => 'modal', :'data-target' => "#delete_transaction_#{transaction.id}", class: 'btn btn-mini btn-danger' %>
         <div id="delete_transaction_<%= transaction.id %>" class="modal hide fade">
           <div class="modal-header">

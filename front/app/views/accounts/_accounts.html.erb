@@ -10,6 +10,9 @@
         <span class="name"><%= link_to account.name, account %></span>
         <span class="current_balance"><%= account.current_balance %></span>
         <%= link_to "edit", edit_account_path(account) %>
+				<!--
+					TODO Extract this into a helper
+				-->
         <%= link_to "delete", '#', :'data-toggle' => 'modal', :'data-target' => "#delete_account_#{account.id}" %>
         <div id="delete_account_<%= account.id %>" class="delete_confirmation modal hide fade">
           <div class="modal-header">
