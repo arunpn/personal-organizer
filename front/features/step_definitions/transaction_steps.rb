@@ -15,6 +15,15 @@ When /^I create the transactions$/ do |table|
   click_button "Create Transactions"
 end
 
-Then /^I should have (\d+) transactions in my account$/ do |amount|
+Then /^I should have (\d+) transactions? in my account$/ do |amount|
   @account.transactions.count.should == amount.to_f
+end
+
+Then /^I should see the wrong transactions$/ do |table|
+  transactions = table.hashes
+  transactions.each do |transaction|
+    transaction.values do |value|
+      page.body.should_match(/#{value}/) unless value.empty?
+    end
+  end
 end

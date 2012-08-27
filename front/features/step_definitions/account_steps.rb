@@ -6,10 +6,6 @@ Given /^I have an account with an initial balance of (\d+)$/ do |initial_balance
   @account = create(:account, initial_balance: initial_balance, user: @user)
 end
 
-Given /^I am on my account page$/ do
-  visit account_path(@account)
-end
-
 When /^I create an account with name "(.*?)" and a initial balance of "(.*?)"$/ do |name, initial_balance|
   fill_in "account_name", with: name
   fill_in "account_initial_balance", with: initial_balance
@@ -58,8 +54,4 @@ end
 
 Then /^the account current balance is (-?\d+)$/ do |current_balance|
   @account.current_balance.should == current_balance.to_f
-end
-
-Then /^I should be on the page of my account$/ do
-  current_path.should == account_path(@account)
 end

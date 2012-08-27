@@ -10,4 +10,14 @@ class Account < ActiveRecord::Base
     transactions_total = transactions.map(&:amount).inject(:+) || 0
     initial_balance + transactions_total
   end
+  
+  def bulk_create(params)
+    invalid_transactions = []
+    params.reject! { |index, transaction| transaction.values.join.empty? }
+    params.each do |index, transaction_params|
+      transaction = transactions.build(transaction_params)
+      invalid_transactions << transaction unless transaction.save
+    end
+    invalid_transactions
+  end
 end

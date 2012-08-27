@@ -20,15 +20,12 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @transactions = []
-    params[:transactions].each_value do |transaction_params|
-      transaction = @account.transactions.build(transaction_params)
-      unless transaction.save
-        @transactions << transaction
-      end
+    @transactions = @account.bulk_create(params[:transactions])
+    if @transactions.empty?
+      redirect_to @account, notice: 'Transaction was successfully created.'
+    else
+      render action: :new
     end
-    redirect_to @account, notice: 'Transaction was successfully created.'
   end
 
   def update
