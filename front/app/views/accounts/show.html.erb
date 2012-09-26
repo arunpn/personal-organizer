@@ -15,6 +15,7 @@
 			<td><%= transaction.name %></td>
 			<td><%= number_to_currency transaction.amount %></td>
 			<td>
+				<%= link_to "edit", edit_account_transaction_path(@account, transaction), class: "btn btn-mini" %>
 				<%= confirmation_delete_link transaction, account_transaction_path(@account, transaction), "Deleting Transaction", "Are you sure to delete this transaction?" %>
 			</td>
 		</tr>

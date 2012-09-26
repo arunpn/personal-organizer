@@ -23,7 +23,7 @@ class TransactionsController < ApplicationController
   def update
     @transaction = Transaction.find(params[:id])
     if @transaction.update_attributes(params[:transaction])
-      redirect_to @transaction, notice: 'Transaction was successfully updated.'
+      redirect_to @account, notice: 'Transaction was successfully updated.'
     else
       render action: "edit"
     end

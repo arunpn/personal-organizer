@@ -74,9 +74,16 @@ Feature: Transactions
     Given I have 3 transactions in my account
     When I am on my account page
     Then I can see the list of my 3 account transactions
-    
+  
   Scenario: Edit transaction
-    pending
+    Given I have 1 transaction in my account
+    And I am on my account page
+    When I click the edit transaction button
+    And I edit the transaction values:
+      | amount | creation   |
+      | -3500  | 2012-09-24 |
+    Then I successfully update the transaction values
+    And I am on my account page
     
   @javascript
   Scenario: Delete transaction

@@ -27,8 +27,31 @@ When /^I click to delete my transaction and confirm$/ do
   end
 end
 
+When /^I click the edit transaction button$/ do
+  within ".transaction" do
+    click_link "edit"
+  end
+end
+
 When /^I set the date for (.*) days ago$/ do |days_number|
   fill_in "creation_date", with: (Date.today -  days_number.to_i.days).to_s
+end
+
+When /^I edit the transaction values:$/ do |table|
+  table.hashes.each do |hash|
+    @new_transaction_values = hash
+    hash.each_pair do |key, value|
+      fill_in "transaction_#{key}", with: value
+    end
+  end
+end
+
+Then /^I successfully update the transaction values$/ do
+  click_button "Update Transaction"
+  transaction = Transaction.last
+  @new_transaction_values.each_pair do |key, value|
+    transaction.send(key).to_s.should == value
+  end
 end
 
 Then /^I should have (\d+) transactions? in my account$/ do |amount|
