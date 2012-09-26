@@ -3,14 +3,6 @@ class TransactionsController < ApplicationController
   before_filter :accounts
   before_filter :authenticate_user!
 
-  def index
-    @transactions = Transaction.all
-  end
-
-  def show
-    @transaction = Transaction.find(params[:id])
-  end
-
   def new
     @transactions = (1..5).map { @account.transactions.build }
   end

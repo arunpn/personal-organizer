@@ -4,7 +4,7 @@ Front::Application.routes.draw do
   devise_for :users
 
   resources :accounts do
-    resources :transactions, except: [:new] do
+    resources :transactions, except: [:new, :index, :show] do
       get 'new', on: :collection, as: :new
     end
   end
