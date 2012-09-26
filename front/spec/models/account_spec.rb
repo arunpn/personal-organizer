@@ -27,7 +27,7 @@ describe Account do
   end
   
   describe "#bulk_create" do
-    context "given a transactions parameters hash" do
+    context "given a transactions parameters hash and a date" do
       subject { create(:account) }
       let(:transaction0) { attributes_for(:transaction_param, name: '') }
       let(:transaction1) { attributes_for(:transaction, account: subject) }
@@ -35,13 +35,13 @@ describe Account do
       let(:transaction3) { {name: '', amount: '', description: ''} }
       let(:params) { { "0" => transaction0, "1" => transaction1, "2" => transaction2, "3" => transaction3 } }
       
-      it "creates all valid transactions in there" do
-        subject.bulk_create(params)
+      it "creates all valid transactions in there for the specified date" do
+        subject.bulk_create(params, Date.today)
         Transaction.where(account_id: subject.id).count.should == 1
       end
       
       it "returns all invalid transactions in an array ignoring blank transaction param hashes" do
-        subject.bulk_create(params).length.should == 2
+        subject.bulk_create(params, Date.today).length.should == 2
       end
     end
   end

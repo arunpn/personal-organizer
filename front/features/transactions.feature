@@ -34,9 +34,25 @@ Feature: Transactions
     Then I should be on my account page
     And I should have 6 transactions in my account
     And the account current balance is 39300
+    And the transactions creation date is today
 
+  @javascript
   Scenario: Add daily transactions for an specified day
-    pending
+    Given I am on my account page
+    When I click the add transactions button
+    And I set the date for 2 days ago
+    And I create the transactions
+      | name              | amount | description                    |
+      | supermercado      | -30000 |                                |
+      | recarga celular   | -2000  | la única recarga del mes       |
+      | pae               | 53000  | de agosto                      |
+      | retorno de dinero | 12000  | que le había prestado a camilo |
+      | dulces            | 1500   |                                |
+      | almuerzo          | 1800   | puré con chuleta de cerdo      |
+    Then I should be on my account page
+    And I should have 6 transactions in my account
+    And the account current balance is 39300
+    And the transactions creation date is 2 days ago
 
   Scenario: Add daily transactions with some errors
     Given I am on my account page

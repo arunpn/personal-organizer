@@ -4,6 +4,7 @@ FactoryGirl.define do
     amount -5000
     description "asdf"
     association :account
+    creation Date.today
   end
   
   factory :transaction_param, class: :transaction do

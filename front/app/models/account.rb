@@ -11,11 +11,11 @@ class Account < ActiveRecord::Base
     initial_balance + transactions_total
   end
   
-  def bulk_create(params)
+  def bulk_create(params, creation_date)
     invalid_transactions = []
     params.reject! { |index, transaction| transaction.values.join.empty? }
     params.each do |index, transaction_params|
-      transaction = transactions.build(transaction_params)
+      transaction = transactions.build(transaction_params.merge({creation: creation_date}))
       invalid_transactions << transaction unless transaction.save
     end
     invalid_transactions

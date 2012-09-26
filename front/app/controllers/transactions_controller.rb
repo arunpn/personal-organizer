@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transactions = @account.bulk_create(params[:transactions])
+    @transactions = @account.bulk_create(params[:transactions], params[:creation_date])
     if @transactions.empty?
       redirect_to @account, notice: 'Transaction was successfully created.'
     else

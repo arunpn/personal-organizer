@@ -27,6 +27,10 @@ When /^I click to delete my transaction and confirm$/ do
   end
 end
 
+When /^I set the date for (.*) days ago$/ do |days_number|
+  fill_in "creation_date", with: (Date.today -  days_number.to_i.days).to_s
+end
+
 Then /^I should have (\d+) transactions? in my account$/ do |amount|
   @account.transactions.count.should == amount.to_f
 end
@@ -46,4 +50,11 @@ Then /^I can see the list of my (\d+) account transactions$/ do |transactions_nu
     step %Q{I should see "#{number_to_currency(transaction.amount)}"}
   end
   step %Q{I should have #{transactions_number} transactions in my account}
+end
+
+Then /^the transactions creation date is (.*)$/ do |time|
+  expected_date = Date.today - time.to_i.days
+  Transaction.all.each do |transaction|
+    transaction.creation.should == expected_date
+  end
 end
