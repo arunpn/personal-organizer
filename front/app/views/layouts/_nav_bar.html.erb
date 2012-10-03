@@ -1,7 +1,11 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Personal Organizer", root_url, class: "brand" %>
+			<% if user_signed_in? %>
+				<%= link_to "Personal Organizer", accounts_path, class: "brand" %>
+			<% else %>
+	      <%= link_to "Personal Organizer", root_path, class: "brand" %>
+			<% end %>
       <ul class="nav pull-left">
         <li><%= link_to 'Accounts', accounts_url %></li>
       </ul>
