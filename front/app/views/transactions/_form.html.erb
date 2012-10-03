@@ -1,0 +1,14 @@
+<%= simple_form_for([@account, @transaction]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+		<%= f.input :creation, as: :string %>
+		<%= f.input :name %>
+		<%= f.input :amount, as: :string %>
+		<%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

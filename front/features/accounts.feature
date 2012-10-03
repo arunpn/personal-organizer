@@ -21,16 +21,18 @@ Feature: Accounts
   @javascript
   Scenario: Deleting an account
     Given I have an account named "wallet"
+    And I have 3 transactions in my account
     And I am on the accounts page
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"
     And I should see the message "Your account and all its transactions will be lost forever"
     When I click "Confirm" on the delete confirmation dialog
     Then my account and its transactions no longer exists
-
+    
   @javascript
   Scenario: Desisting to delete an Account
     Given I have an account named "wallet"
+    And I have 3 transactions in my account
     And I am on the accounts page
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"

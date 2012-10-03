@@ -9,6 +9,10 @@ body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 .navbar .brand {
-  color: white;
-  font-size: 2.2em;
+  color: black;
+  font-size: 1.8em;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	background-image: image-url("/assets/glyphicons-halflings.png");
 }

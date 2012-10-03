@@ -3,6 +3,11 @@ class AccountsController < ApplicationController
   before_filter :accounts
   
   def index
+    @transactions = Transaction.order(:creation)
+  end
+
+  def show
+    @account = Account.find(params[:id])
   end
 
   def new

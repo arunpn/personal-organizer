@@ -14,10 +14,15 @@
 }
 
 #login {
+	span {
+		padding: 10px 15px 10px;
+		display: block;
+	}
   form {
     margin: 5px;
     div { display: inline-block; }
     .control-group { margin: 0; }
+		input[type="submit"] { margin-top: 0; }
   }
 }
 

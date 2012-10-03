@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
 
   def new_account(name, initial_balance)
     accounts.create(name: name, initial_balance: initial_balance)
