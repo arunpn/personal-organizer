@@ -37,8 +37,9 @@ end
 
 Then /^I should see my account's name and its current balance of "(.*?)"$/ do |current_balance|
   account = Account.last
+  formatted_balance = number_to_currency(current_balance)
   step %Q{I should see "#{account.name}"}
-  step %Q{I should see "#{account.current_balance}"}
+  step %Q{I should see "#{formatted_balance}"}
   account.current_balance.should == current_balance.to_f
 end
 

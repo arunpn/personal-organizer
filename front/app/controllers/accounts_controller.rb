@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
   before_filter :accounts
   
   def index
+    @transactions = Transaction.order(:creation)
   end
 
   def show

@@ -1,5 +1,8 @@
-<%= link_to "delete", '#', :'data-toggle' => 'modal', :'data-target' => "##{modal_id}", class: 'btn btn-mini btn-danger' %>
-<div id="<%= modal_id %>" class="modal hide fade">
+<%= link_to '#', :'data-toggle' => 'modal', :'data-target' => "##{modal_id}", title: "delete" do %>
+	<%= link_content %>
+<% end %>
+
+<div id="<%= modal_id %>" class="modal hide">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3><%= modal_title %></h3>

@@ -28,7 +28,7 @@ Feature: Accounts
     And I should see the message "Your account and all its transactions will be lost forever"
     When I click "Confirm" on the delete confirmation dialog
     Then my account and its transactions no longer exists
-
+    
   @javascript
   Scenario: Desisting to delete an Account
     Given I have an account named "wallet"
