@@ -1,0 +1,20 @@
+table.transactions {
+	border: 1px solid #E3E3E3;
+	
+	.creation {
+		width: 15%;
+	}
+	.name {
+		width: 40%;
+	}
+}
+
+.account_title {
+	display: inline-block;
+}
+
+.new_transactions {
+	display: inline-block;
+	float: right;
+	margin-top: 15px;
+}

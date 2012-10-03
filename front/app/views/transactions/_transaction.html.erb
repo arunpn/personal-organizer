@@ -1,0 +1,12 @@
+<tr class="transaction">
+	<td><%= transaction.creation.strftime("%b %d, %Y") %></td>
+	<td><%= transaction.name %></td>
+	<td><%= number_to_currency(transaction.amount) %></td>
+	<% if (show_account rescue false) %>
+		<td><%= link_to transaction.account.name, account_path(transaction.account) %></td>
+	<% end %>
+	<td>
+		<%= edit_transaction_link(transaction) %>
+		<%= delete_transaction_link(transaction) %>
+	</td>
+</tr>

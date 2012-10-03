@@ -10,6 +10,27 @@
 		margin-top: 8px;
 	}
 	
+	.account {
+		overflow: hidden;
+		padding: 10px 0;
+		border-top: 1px solid #E3E3E3;
+		&:last-child{ 
+			border-bottom: 1px solid #E3E3E3;
+		}
+		.name, .current_balance, .actions { 
+			display: inline-block;
+			float: left;
+		}
+		.name {
+			width: 50%;
+		}
+		.current_balance {
+			width: 35%;
+			padding-right: 10px;
+			text-align: right;
+		}
+	}
+	
 	.total {
 		margin-top: 20px;
 		padding: 10px 0;
@@ -23,34 +44,5 @@
 				text-align: right;
 			}
 		}
-	}
-}
-
-.account {
-//	background-color: red;
-	overflow: hidden;
-	padding: 10px 0;
-	border-top: 1px solid #E3E3E3;
-	&:last-child{ 
-		border-bottom: 1px solid #E3E3E3;
-	}
-	
-	.name, .current_balance, .actions { 
-		display: inline-block;
-		float: left;
-	}
-	
-	.name {
-		width: 50%;
-//		background-color: green;
-	}
-	.current_balance {
-		width: 35%;
-		padding-right: 10px;
-//		background-color: blue;
-		text-align: right;
-	}
-	.actions {
-//		background-color: gold;
 	}
 }
