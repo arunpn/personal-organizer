@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'thin'
 
 # gem 'unicorn'
 # gem 'capistrano'
