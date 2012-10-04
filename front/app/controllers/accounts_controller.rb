@@ -1,9 +1,8 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :accounts
   
   def index
-    @transactions = Transaction.order(:creation)
+    @transactions = current_user.transactions.order(:creation)
   end
 
   def show
@@ -43,12 +42,6 @@ class AccountsController < ApplicationController
     @account.destroy
     flash[:notice] = "Account successfully destroyed."
     redirect_to accounts_path
-  end
-
-private
-
-  def accounts
-    @accounts = Account.all
   end
   
 end

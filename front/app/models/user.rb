@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :accounts, dependent: :destroy
+  has_many :transactions, through: :accounts
   has_many :categories, dependent: :destroy
 
   def new_account(name, initial_balance)
