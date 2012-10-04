@@ -9,8 +9,10 @@ module NavigationHelpers
       accounts_path
     when /account/
       account_path(@account)
+    when /categories/
+      categories_path
     when /welcome/
-      root_path   
+      root_path
     # Add more page name => path mappings here
     else
       if path = match_rails_path_for(page_name) 
