@@ -3,8 +3,9 @@ class Account < ActiveRecord::Base
   has_many :transactions, dependent: :destroy
   attr_accessible :name, :initial_balance
 
-  validates :name, presence: :true
-  validates :initial_balance, presence: :true, numericality: true
+  validates :user_id, presence: true
+  validates :name, presence: true
+  validates :initial_balance, presence: true, numericality: true
 
   def current_balance
     transactions_total = transactions.map(&:amount).inject(:+) || 0

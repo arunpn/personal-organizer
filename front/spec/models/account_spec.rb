@@ -5,6 +5,7 @@ describe Account do
   it { should have_many(:transactions) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:initial_balance) }
+  it { should validate_presence_of(:user_id) }
   it { should validate_numericality_of(:initial_balance) }
   
   describe "#current_balance" do

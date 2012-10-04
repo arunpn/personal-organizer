@@ -11,11 +11,11 @@ class AccountsController < ApplicationController
   end
 
   def new
-    @account = Account.new
+    @account = current_user.accounts.build
   end
 
   def create
-    @account = Account.new(params[:account])
+    @account = current_user.accounts.build(params[:account])
     if @account.save
       flash[:notice] = "Account successfully created"
       redirect_to action: :index

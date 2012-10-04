@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   belongs_to :user
   attr_accessible :color, :name
+  validates :user_id, presence: true
   validates :name, presence: true
   validates :color, presence: true, format: { 
     with: /^#?[0-9A-Fa-f]{3,6}$/,

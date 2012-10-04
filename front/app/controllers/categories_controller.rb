@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @category = current_user.categories.build
     @categories = current_user.categories
@@ -9,7 +11,7 @@ class CategoriesController < ApplicationController
     if @category.save
       flash[:notice] = "Category successfully created"
     else
-      flast[:error] = "Can't create category"
+      flash[:error] = "Can't create category"
     end
     redirect_to categories_path
   end

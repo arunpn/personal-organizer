@@ -4,6 +4,7 @@ describe Category do
   it { should belong_to(:user) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:color) }
+  it { should validate_presence_of(:user_id) }
 
   describe "#color=" do
     it "appends a # at the beginning if the parameter has not" do
