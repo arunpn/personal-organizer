@@ -2,8 +2,8 @@ class CategoriesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @categories = current_user.categories.select(&:valid?)
     @category = current_user.categories.build
-    @categories = current_user.categories
   end
   
   def create

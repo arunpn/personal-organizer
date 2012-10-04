@@ -1,1 +1,12 @@
 #new_category_form form { margin: 0; }
+
+#categories {
+	overflow: hidden;
+	
+	.category {
+		display: inline-block;
+		float: left;
+		padding: 10px 15px;
+		margin: 10px;
+	}
+}
