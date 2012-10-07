@@ -13,3 +13,5 @@
 		<%= render 'transactions/transaction', transaction: transaction, show_account: true %>
 	<% end %>
 </table>
+
+<%= paginate @transactions %>

@@ -111,6 +111,10 @@ GEM
       thor (~> 0.14)
     json (1.7.5)
     json_pure (1.7.4)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
@@ -245,6 +249,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-spork
   jquery-rails
+  kaminari
   mysql2
   poltergeist
   pry

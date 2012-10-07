@@ -2,11 +2,12 @@ class AccountsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @transactions = current_user.transactions.order(:creation)
+    @transactions = current_user.transactions.page(params[:page])
   end
 
   def show
     @account = Account.find(params[:id])
+    @transactions = @account.transactions.page(params[:page])
   end
 
   def new

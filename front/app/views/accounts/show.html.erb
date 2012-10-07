@@ -10,7 +10,9 @@
 		<th class="category">Category</th>
 		<th class="actions"></th>
 	</tr>
-	<% @account.transactions.each do |transaction| %>
+	<% @transactions.each do |transaction| %>
 		<%= render 'transactions/transaction', transaction: transaction %>
 	<% end %>
 </table>
+
+<%= paginate @transactions %>

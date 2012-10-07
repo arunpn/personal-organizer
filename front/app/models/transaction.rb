@@ -11,4 +11,6 @@ class Transaction < ActiveRecord::Base
   validates :creation, presence: true
   
   default_scope order('creation DESC')
+  
+  paginates_per 15
 end
