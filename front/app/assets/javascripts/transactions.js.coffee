@@ -10,3 +10,10 @@ jQuery ->
     $(this).before($(this).data('fields').replace(regexp, count))
     $('#transactions_count').val(count+1)
     event.preventDefault()
+
+  $('#new_daily_transactions_form').on 'focusin', 'input.amount', ->
+    if $(@).val() == ''
+      $(@).val('-')
+    
+  $('#new_daily_transactions_form').on 'focusout', 'input.amount', ->
+    $(@).val('') if $(@).val() == '-'

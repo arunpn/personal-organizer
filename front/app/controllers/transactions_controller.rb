@@ -1,6 +1,5 @@
 class TransactionsController < ApplicationController
   before_filter :account
-  before_filter :accounts
   before_filter :authenticate_user!
 
   def new
@@ -39,10 +38,6 @@ private
 
   def account
     @account = Account.find(params[:account_id])
-  end
-  
-  def accounts
-    @accounts = Account.all
   end
   
 end

@@ -1,0 +1,57 @@
+<h1 class="object_title">Categories</h1>
+<%= link_to "New Category", '#', id: 'new_category', class: 'btn btn-primary btn-large new_object', :'data-toggle' => 'modal', :'data-target' => "#new_category_form" %>
+
+<div id="new_category_form" class="modal hide">
+	<%= simple_form_for(@category) do |f| %>
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    <h3>New Category</h3>
+	  </div>
+	  <div class="modal-body">
+		  <%= f.error_notification %>
+
+		  <div class="form-inputs">
+				<%= f.input :name %>
+				<%= f.input :color %>
+		  </div>
+	  </div>
+	  <div class="modal-footer">
+	    <%= link_to "Cancel", '#', class: "btn", :'data-dismiss' => "modal" %>
+	    <%= f.button :submit, class: "btn btn-primary" %>
+	  </div>	
+	<% end %>
+</div>
+
+<div id="categories">
+	<% @categories.each do |category| %>
+		<div id="category_<%= category.id %>" class="category label" style="background-color: <%= category.color %>;">
+			<%= category.name %>
+			<div class="actions">
+				<%= link_to content_tag(:i, '', class: 'icon-pencil'), '#', title: 'edit', :'data-toggle' => 'modal', :'data-target' => "#edit_category_#{category.id}_form" %>
+				<%= confirmation_delete_link category, category_path(category), "Are you sure to delete the category?", "" do %>
+		      <%= content_tag(:i, '', class: 'icon-trash') %>
+				<% end %>
+			</div>
+			<div id="edit_category_<%= category.id %>_form" class="modal hide edit_category_form">
+				<%= simple_form_for(category) do |f| %>
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				    <h3>Edit Category</h3>
+				  </div>
+				  <div class="modal-body">
+					  <%= f.error_notification %>
+
+					  <div class="form-inputs">
+							<%= f.input :name %>
+							<%= f.input :color %>
+					  </div>
+				  </div>
+				  <div class="modal-footer">
+				    <%= link_to "Cancel", '#', class: "btn", :'data-dismiss' => "modal" %>
+				    <%= f.button :submit, class: "btn btn-primary" %>
+				  </div>	
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

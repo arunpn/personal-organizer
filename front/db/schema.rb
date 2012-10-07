@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926224543) do
+ActiveRecord::Schema.define(:version => 20121007033247) do
 
   create_table "accounts", :force => true do |t|
     t.string  "name"
     t.integer "initial_balance"
     t.integer "user_id"
   end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["user_id"], :name => "index_categories_on_user_id"
 
   create_table "transactions", :force => true do |t|
     t.string   "name"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120926224543) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.date     "creation"
+    t.integer  "category_id"
   end
 
   add_index "transactions", ["account_id"], :name => "index_transactions_on_account_id"

@@ -1,5 +1,19 @@
 <div id="transaction_<%= index %>">
-  <%= f.text_field 'name', placeholder: 'Name' %>
-  <%= f.text_field 'amount', placeholder: 'Amount' %>
-  <%= f.text_area 'description', rows: '1', cols: '200' %>
+  <%= f.text_field 'name', placeholder: ((!f.object.errors.messages[:name].present? || f.object.errors.messages[:name].empty?) ? 'Name' : f.object.errors.messages[:name].join(", ")), class: 'name' %>
+	
+  <%= f.text_field 'amount', placeholder: ((!f.object.errors.messages[:amount].present? || f.object.errors.messages[:amount].empty?) ? 'Amount' : f.object.errors.messages[:amount].join(", ")), class: "#{Rails.env == 'test' ? 'amount_test' : 'amount'}" %>
+	
+	<%= f.select 'category_id', options_from_collection_for_select(current_user.categories, 'id', 'name'), { include_blank: true }, { class: 'category' } %>
+	
+  <%= f.text_area 'description', rows: '1', cols: '200', class: 'description', placeholder: 'Description' %>
 </div>
+<!-- <div class="error_messages">
+	<ul>
+		<%#= f.object.errors.messages.inspect %>
+		<%# f.object.errors.messages.each_pair do |facet, messages| %>
+			<%# unless messages.empty? %>
+				<li><%#= "#{facet}: #{messages.join(', ')}" %></li>
+			<%# end %>
+		<%# end %>
+	</ul>
+</div> -->

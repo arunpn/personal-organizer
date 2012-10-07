@@ -5,6 +5,7 @@ describe Account do
   it { should have_many(:transactions) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:initial_balance) }
+  it { should validate_presence_of(:user_id) }
   it { should validate_numericality_of(:initial_balance) }
   
   describe "#current_balance" do
@@ -30,7 +31,7 @@ describe Account do
     context "given a transactions parameters hash and a date" do
       subject { create(:account) }
       let(:transaction0) { attributes_for(:transaction_param, name: '') }
-      let(:transaction1) { attributes_for(:transaction, account: subject) }
+      let(:transaction1) { attributes_for(:transaction, account: subject, category_id: 3) }
       let(:transaction2) { attributes_for(:transaction_param, amount: '') }
       let(:transaction3) { {name: '', amount: '', description: ''} }
       let(:params) { { "0" => transaction0, "1" => transaction1, "2" => transaction2, "3" => transaction3 } }

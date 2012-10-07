@@ -8,6 +8,8 @@ Front::Application.routes.draw do
       get 'new', on: :collection, as: :new
     end
   end
+  
+  resources :categories, only: [:index, :create, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

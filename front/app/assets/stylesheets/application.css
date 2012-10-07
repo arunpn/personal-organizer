@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+.object_title {
+	display: inline-block;
+}
+
+.new_object {
+	display: inline-block;
+	float: right;
+	margin-top: 15px;
+}

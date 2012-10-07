@@ -5,6 +5,8 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'thin'
+gem 'kaminari'
 
 # gem 'unicorn'
 # gem 'capistrano'
@@ -17,11 +19,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'faker'
+end
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'guard-spork'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
   gem 'pry'
   gem 'brakeman'
 end

@@ -3,7 +3,7 @@
   <%= link_to "New", new_account_path, class: "btn btn-primary btn-small pull-right new_account" %>
 
   <% if @accounts.empty? %>
-    <span>No accounts yet, you <%= link_to 'should create one', new_account_path %></span>
+    <div class="empty">No accounts yet, you <%= link_to 'should create one', new_account_path %></div>
   <% else %>
     <% @accounts.each do |account| %>
       <div class="account">
@@ -15,12 +15,9 @@
 				</div>
       </div>
     <% end %>
+		<div class="total">
+			<div>Total</div>
+			<div><%= number_to_currency(accounts_total) %></div>
+		</div>
   <% end %>
-	
-	<div class="total">
-		<div>Total</div>
-		<div><%= number_to_currency(accounts_total) %></div>
-	</div>
 </nav>
-
-<!-- #confirmation_delete_link account, account_path(account), "Are you sure to delete the account?", "Your account and all its transactions will be lost forever." -->

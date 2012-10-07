@@ -14,7 +14,7 @@
   <%= render 'layouts/nav_bar' %>
   <div class="container">
     <%= render 'layouts/notifications' %>
-    <% if user_signed_in? && @accounts.present? %>
+    <% if user_signed_in? %>
       <div class="row">
         <div class="span4">
           <%= render 'accounts/accounts' %>

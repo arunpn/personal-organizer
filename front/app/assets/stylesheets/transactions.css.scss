@@ -5,16 +5,67 @@ table.transactions {
 		width: 15%;
 	}
 	.name {
-		width: 40%;
+		width: 30%;
+	}
+	.amount {
+		width: 15%;
+	}
+	.category {
+		width: 15%;
+	}
+	
+	&.show_table {
+		.name {
+			width: 40%;
+		}
+		.amount {
+			width: 20%;
+		}
 	}
 }
 
-.account_title {
-	display: inline-block;
+.edit_transaction {
+	margin-top: 20px;
+	
+	label {
+		display: inline-block;
+		width: 20%;
+	}
+	.controls { display: inline-block; }
+	textarea {
+		width: 330px;
+		height: 120px;
+	}
 }
 
-.new_transactions {
-	display: inline-block;
-	float: right;
-	margin-top: 15px;
+#new_daily_transactions_form {
+	margin-top: 30px;
+	
+	$error: #b94a48;
+	.field_with_errors { 
+		display: inline-block; 
+		input, select, textarea {
+			border: 1px solid $error;
+			color: $error;
+			&::-webkit-input-placeholder {
+			    color:  $error;
+			}
+			&:-moz-placeholder {
+			    color: $error;
+			}
+		}
+	}
+	
+	#creation_date, .name {
+		width: 200px;
+	}
+	.amount {
+		width: 110px;
+	}
+	.category {
+		width: 140px;
+	}
+	.description {
+		width: 250px;
+	}
 }

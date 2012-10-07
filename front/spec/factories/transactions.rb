@@ -4,6 +4,7 @@ FactoryGirl.define do
     amount -5000
     description "asdf"
     association :account
+    association :category
     creation Date.today
   end
   
@@ -11,5 +12,6 @@ FactoryGirl.define do
     sequence(:name) {|n| "myTransaction#{n}" }
     amount -5000
     description "asdf"
+    category_id 3
   end
 end

@@ -1,21 +1,21 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :accounts
   
   def index
-    @transactions = Transaction.order(:creation)
+    @transactions = current_user.transactions.page(params[:page])
   end
 
   def show
     @account = Account.find(params[:id])
+    @transactions = @account.transactions.page(params[:page])
   end
 
   def new
-    @account = Account.new
+    @account = current_user.accounts.build
   end
 
   def create
-    @account = Account.new(params[:account])
+    @account = current_user.accounts.build(params[:account])
     if @account.save
       flash[:notice] = "Account successfully created"
       redirect_to action: :index
@@ -43,12 +43,6 @@ class AccountsController < ApplicationController
     @account.destroy
     flash[:notice] = "Account successfully destroyed."
     redirect_to accounts_path
-  end
-
-private
-
-  def accounts
-    @accounts = Account.all
   end
   
 end

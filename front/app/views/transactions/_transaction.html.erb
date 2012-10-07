@@ -2,6 +2,13 @@
 	<td><%= transaction.creation.strftime("%b %d, %Y") %></td>
 	<td><%= transaction.name %></td>
 	<td><%= number_to_currency(transaction.amount) %></td>
+	<td>
+		<% if transaction.category.present? %>
+			<span class='label' style="background-color:<%= transaction.category.color %>;">
+				<%= transaction.category.name %>
+			</span>
+		<% end %>
+	</td>
 	<% if (show_account rescue false) %>
 		<td><%= link_to transaction.account.name, account_path(transaction.account) %></td>
 	<% end %>

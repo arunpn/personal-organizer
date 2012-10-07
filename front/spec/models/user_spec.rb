@@ -2,6 +2,7 @@ require  'spec_helper'
 
 describe User do
   it { should have_many(:accounts) }
+  it { should have_many(:categories) }
 
   describe "#new_account" do
     subject { create(:user) }
@@ -26,6 +27,11 @@ describe User do
       3.times { create(:account, user: subject) }
       subject.destroy
       Account.where(user_id: subject.id).should be_empty
+    end
+    it "removes all his categories" do
+      3.times { create(:category, user: subject) }
+      subject.destroy
+      Category.where(user_id: subject.id).should be_empty
     end
   end
 end
