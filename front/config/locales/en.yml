@@ -2,4 +2,14 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  number:
+    currency:
+      format:
+        delimiter: '.'
+        format: '%u%n'
+        negative_format: '%u-%n'
+        precision: 0
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: true
+        unit: '$ '
