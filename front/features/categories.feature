@@ -19,25 +19,19 @@ Feature: Categories
     And I am on the categories page
     Then I can edit my category and change its name for "Supermercado"
     And I am on the categories page
-  # 
-  # @javascript
-  # Scenario: Deleting an account
-  #   Given I have an account named "wallet"
-  #   And I have 3 transactions in my account
-  #   And I am on the accounts page
-  #   When I click to delete my account
-  #   Then I should see "Are you sure to delete the account?"
-  #   And I should see the message "Your account and all its transactions will be lost forever"
-  #   When I click "Confirm" on the delete confirmation dialog
-  #   Then my account and its transactions no longer exists
-  #   
-  # @javascript
-  # Scenario: Desisting to delete an Account
-  #   Given I have an account named "wallet"
-  #   And I have 3 transactions in my account
-  #   And I am on the accounts page
-  #   When I click to delete my account
-  #   Then I should see "Are you sure to delete the account?"
-  #   And I should see the message "Your account and all its transactions will be lost forever"
-  #   When I click "Cancel" on the delete confirmation dialog
-  #   Then my account and its transactions still exists
+  
+  Scenario: Deleting a category
+    Given I have a category named "Supermarket"
+    And I am on the categories page
+    When I click to delete my category
+    Then I should see the message "Are you sure to delete the category?"
+    When I click "Confirm" on the delete category confirmation dialog
+    Then my category should no longer exists
+
+  Scenario: Desisting to delete an Account
+    Given I have a category named "Supermarket"
+    And I am on the categories page
+    When I click to delete my category
+    Then I should see the message "Are you sure to delete the category?"
+    When I click "Cancel" on the delete category confirmation dialog
+    Then my category should still exists

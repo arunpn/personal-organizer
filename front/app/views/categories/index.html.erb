@@ -28,6 +28,9 @@
 			<%= category.name %>
 			<div class="actions">
 				<%= link_to content_tag(:i, '', class: 'icon-pencil'), '#', title: 'edit', :'data-toggle' => 'modal', :'data-target' => "#edit_category_#{category.id}_form" %>
+				<%= confirmation_delete_link category, category_path(category), "Are you sure to delete the category?", "" do %>
+		      <%= content_tag(:i, '', class: 'icon-trash') %>
+				<% end %>
 			</div>
 			<div id="edit_category_<%= category.id %>_form" class="modal hide edit_category_form">
 				<%= simple_form_for(category) do |f| %>

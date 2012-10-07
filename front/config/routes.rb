@@ -9,7 +9,7 @@ Front::Application.routes.draw do
     end
   end
   
-  resources :categories, only: [:index, :create, :update]
+  resources :categories, only: [:index, :create, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

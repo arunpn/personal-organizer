@@ -26,7 +26,7 @@ Feature: Accounts
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"
     And I should see the message "Your account and all its transactions will be lost forever"
-    When I click "Confirm" on the delete confirmation dialog
+    When I click "Confirm" on the delete account confirmation dialog
     Then my account and its transactions no longer exists
     
   @javascript
@@ -37,5 +37,5 @@ Feature: Accounts
     When I click to delete my account
     Then I should see "Are you sure to delete the account?"
     And I should see the message "Your account and all its transactions will be lost forever"
-    When I click "Cancel" on the delete confirmation dialog
+    When I click "Cancel" on the delete account confirmation dialog
     Then my account and its transactions still exists
