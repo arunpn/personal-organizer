@@ -1,6 +1,9 @@
 class Category < ActiveRecord::Base
   belongs_to :user
+  has_many :transactions
+  
   attr_accessible :color, :name
+  
   validates :user_id, presence: true
   validates :name, presence: true
   validates :color, presence: true, format: { 
@@ -8,6 +11,8 @@ class Category < ActiveRecord::Base
     message: "has to be an 3 or 6 hexadecimal number"
   }
   before_save :prepend_sharp_to_color
+  
+  default_scope order(:name) 
   
   private
   

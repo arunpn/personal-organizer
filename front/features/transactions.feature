@@ -6,15 +6,20 @@ Feature: Transactions
   Background:
     Given I am a logged user
     And I have an account with an initial balance of 3000
-
+    And I have created the following categories:
+      | name        | color  |
+      | supermarket | ff0000 |
+      | bank        | 00ff00 |
+      | others      | 0000ff |
+  
   Scenario: Add daily transactions
     And I am on my account page
     When I click the add transactions button
     And I create the transactions
-      | name              | amount | description                    |
-      | supermercado      | -30000 |                                |
-      | recarga celular   | -2000  | la única recarga del mes       |
-      | pae               | 53000  | de agosto                      |
+      | name            | amount | category    | description              |
+      | supermercado    | -30000 | supermarket |                          |
+      | recarga celular | -2000  | others      | la única recarga del mes |
+      | pae             | 53000  | bank        | de agosto                |
     Then I should be on my account page
     And I should have 3 transactions in my account
     And the account current balance is 24000
@@ -24,13 +29,13 @@ Feature: Transactions
     Given I am on my account page
     When I click the add transactions button
     And I create the transactions
-      | name              | amount | description                    |
-      | supermercado      | -30000 |                                |
-      | recarga celular   | -2000  | la única recarga del mes       |
-      | pae               | 53000  | de agosto                      |
-      | retorno de dinero | 12000  | que le había prestado a camilo |
-      | dulces            | 1500   |                                |
-      | almuerzo          | 1800   | puré con chuleta de cerdo      |
+      | name              | amount | category    | description                    |
+      | supermercado      | -30000 | supermarket |                                |
+      | recarga celular   | -2000  | others      | la única recarga del mes       |
+      | pae               | 53000  | bank        | de agosto                      |
+      | retorno de dinero | 12000  | supermarket | que le había prestado a camilo |
+      | dulces            | 1500   | others      |                                |
+      | almuerzo          | 1800   | bank        | puré con chuleta de cerdo      |
     Then I should be on my account page
     And I should have 6 transactions in my account
     And the account current balance is 39300
@@ -42,13 +47,13 @@ Feature: Transactions
     When I click the add transactions button
     And I set the date for 2 days ago
     And I create the transactions
-      | name              | amount | description                    |
-      | supermercado      | -30000 |                                |
-      | recarga celular   | -2000  | la única recarga del mes       |
-      | pae               | 53000  | de agosto                      |
-      | retorno de dinero | 12000  | que le había prestado a camilo |
-      | dulces            | 1500   |                                |
-      | almuerzo          | 1800   | puré con chuleta de cerdo      |
+      | name              | amount | category    | description                    |
+      | supermercado      | -30000 | supermarket |                                |
+      | recarga celular   | -2000  | others      | la única recarga del mes       |
+      | pae               | 53000  | bank        | de agosto                      |
+      | retorno de dinero | 12000  | supermarket | que le había prestado a camilo |
+      | dulces            | 1500   | others      |                                |
+      | almuerzo          | 1800   | bank        | puré con chuleta de cerdo      |
     Then I should be on my account page
     And I should have 6 transactions in my account
     And the account current balance is 39300
@@ -58,18 +63,18 @@ Feature: Transactions
     Given I am on my account page
     When I click the add transactions button
     And I create the transactions
-      | name            | amount | description              |
-      | supermercado    |        |                          |
-      | recarga celular | -2000  | la única recarga del mes |
-      |                 | 53000  | de agosto                |
+      | name            | amount | category    | description              |
+      | supermercado    |        | supermarket |                          |
+      | recarga celular | -2000  | others      | la única recarga del mes |
+      |                 | 53000  | bank        | de agosto                |
     Then I should be on the new transactions page
     And I should see the wrong transactions
-      | name            | amount | description              |
-      | supermercado    |        |                          |
-      |                 | 53000  | de agosto                |
+      | name            | amount | category    | description              |
+      | supermercado    |        | supermarket |                          |
+      |                 | 53000  | others      | de agosto                |
     And I should have 1 transaction in my account
     And the account current balance is 1000
-
+  
   Scenario: Listing transactions
     Given I have 3 transactions in my account
     When I am on my account page
@@ -80,11 +85,11 @@ Feature: Transactions
     And I am on my account page
     When I click the edit transaction button
     And I edit the transaction values:
-      | amount | creation   |
-      | -3500  | 2012-09-24 |
+      | amount | category    | creation   |
+      | -3500  | supermarket | 2012-09-24 |
     Then I successfully update the transaction values
     And I am on my account page
-    
+  
   @javascript
   Scenario: Delete transaction
     Given I have 1 transaction in my account

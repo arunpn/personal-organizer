@@ -5,6 +5,7 @@
 		<%= f.input :creation, as: :string %>
 		<%= f.input :name %>
 		<%= f.input :amount, as: :string %>
+		<%= f.input :category_id, collection: Category.all %>
 		<%= f.input :description %>
   </div>
 

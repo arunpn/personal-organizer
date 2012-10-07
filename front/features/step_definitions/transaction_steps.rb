@@ -14,6 +14,7 @@ When /^I create the transactions$/ do |table|
   transactions.each_with_index do |transaction, index|
     fill_in "transactions_#{index}_name", with: transaction['name']
     fill_in "transactions_#{index}_amount", with: transaction['amount']
+    select transaction['category'], from: "transactions_#{index}_category_id", with: transaction['description']
     fill_in "transactions_#{index}_description", with: transaction['description']
   end
   click_button "Create Transactions"
@@ -41,7 +42,11 @@ When /^I edit the transaction values:$/ do |table|
   table.hashes.each do |hash|
     @new_transaction_values = hash
     hash.each_pair do |key, value|
-      fill_in "transaction_#{key}", with: value
+      if key == "category"
+        select value, from: "transaction_#{key}_id"
+      else
+        fill_in "transaction_#{key}", with: value
+      end
     end
   end
 end
@@ -50,7 +55,11 @@ Then /^I successfully update the transaction values$/ do
   click_button "Update Transaction"
   transaction = Transaction.last
   @new_transaction_values.each_pair do |key, value|
-    transaction.send(key).to_s.should == value
+    if key == "category"
+      transaction.send(key).name.should == value
+    else
+      transaction.send(key).to_s.should == value
+    end
   end
 end
 

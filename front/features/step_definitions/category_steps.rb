@@ -2,6 +2,13 @@ Given /^I have a category named "(.*?)"$/ do |name|
   @category = create(:category, name: name, user: @user)
 end
 
+Given /^I have created the following categories:$/ do |table|
+  table.hashes.each do |hash|
+    create(:category, name: hash[:name], color: hash[:color], user: @user)
+  end
+end
+
+
 When /^I press the new category button$/ do
   click_link "new_category"
 end
