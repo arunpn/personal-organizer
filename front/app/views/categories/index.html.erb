@@ -24,7 +24,7 @@
 
 <div id="categories">
 	<% @categories.each do |category| %>
-		<div class="category label" style="background-color: <%= category.color %>;">
+		<div id="category_<%= category.id %>" class="category label" style="background-color: <%= category.color %>;">
 			<%= category.name %>
 			<div class="actions">
 				<%= link_to content_tag(:i, '', class: 'icon-pencil'), '#', title: 'edit', :'data-toggle' => 'modal', :'data-target' => "#edit_category_#{category.id}_form" %>

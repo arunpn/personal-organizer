@@ -18,6 +18,13 @@ When /^I click to delete my account$/ do
   end
 end
 
+When /^I click "(.*?)" on the delete account confirmation dialog$/ do |name|
+  sleep 2
+  within ".account" do
+    click_link name
+  end
+end
+
 Then /^my account and its transactions no longer exists$/ do
   Account.count.should == 0
   Transaction.count.should == 0

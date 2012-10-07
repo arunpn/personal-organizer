@@ -6,6 +6,21 @@ describe Category do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:color) }
   it { should validate_presence_of(:user_id) }
+  
+  describe "#name", :wip do
+    it "should be unique for a user" do
+      user = create(:user)
+      category1 = create(:category, name: 'clothing', user: user)
+      category2 = build(:category, name: 'clothing', user: user)
+      category2.should_not be_valid
+    end
+    
+    it "should be valid if its the only category with its name for a user" do
+      user = create(:user)
+      category = create(:category, name: 'clothing', user: user)
+      category.should be_valid
+    end
+  end
 
   describe "#color=" do
     it "appends a # at the beginning if the parameter has not" do

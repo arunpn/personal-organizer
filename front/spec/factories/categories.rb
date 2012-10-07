@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    name "myCategory"
+    sequence(:name) {|n| "myCategory#{n}" } 
     color "#333"
     association :user
   end

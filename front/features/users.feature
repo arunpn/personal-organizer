@@ -7,6 +7,7 @@ Feature: Users feature
     Given I am on the welcome page
     When I register an user with my email and password
     Then there is my user in the system
+    And it has 10 default categories
 
   Scenario: Sign In
     Given I have my user in the system

@@ -10,18 +10,18 @@ Feature: Categories
   Scenario: Creating a category
     And I am on the categories page
     When I press the new category button
-    And I create a category with name "Supermarket" and color "#333"
+    And I create a category with name "Clothing" and color "#333"
     Then I should be on the categories page
     And I should see my category's name
 
   Scenario: Editing a category
-    Given I have a category named "Supermarket"
+    Given I have a category named "Clothing"
     And I am on the categories page
-    Then I can edit my category and change its name for "Supermercado"
+    Then I can edit my category and change its name for "clothing"
     And I am on the categories page
   
   Scenario: Deleting a category
-    Given I have a category named "Supermarket"
+    Given I have a category named "Clothing"
     And I am on the categories page
     When I click to delete my category
     Then I should see the message "Are you sure to delete the category?"
@@ -29,7 +29,7 @@ Feature: Categories
     Then my category should no longer exists
 
   Scenario: Desisting to delete an Account
-    Given I have a category named "Supermarket"
+    Given I have a category named "Clothing"
     And I am on the categories page
     When I click to delete my category
     Then I should see the message "Are you sure to delete the category?"

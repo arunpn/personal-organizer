@@ -6,13 +6,6 @@ When /^I go to (.*) page$/ do |page|
   visit path_to(page)
 end
 
-When /^I click "(.*?)" on the delete (.*?) confirmation dialog$/ do |name, dialog|
-  sleep 2
-  within ".#{dialog}" do
-    click_link name
-  end
-end
-
 Then /^I should see the message "(.*?)"$/ do |text|
   page.should have_content(text)
 end
