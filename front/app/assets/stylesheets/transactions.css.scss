@@ -5,6 +5,21 @@ table.transactions {
 		width: 15%;
 	}
 	.name {
-		width: 40%;
+		width: 30%;
+	}
+	.amount {
+		width: 15%;
+	}
+	.category {
+		width: 15%;
+	}
+	
+	&.show_table {
+		.name {
+			width: 40%;
+		}
+		.amount {
+			width: 20%;
+		}
 	}
 }
