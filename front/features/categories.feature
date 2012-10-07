@@ -1,22 +1,24 @@
+@javascript
 Feature: Categories
   In order group my personal transactions
   As a person with an account
   I want to create, edit and delete categories for my transactions
 
-  @javascript
-  Scenario: Creating a category
+  Background:
     Given I am a logged user
+    
+  Scenario: Creating a category
     And I am on the categories page
     When I press the new category button
     And I create a category with name "Supermarket" and color "#333"
     Then I should be on the categories page
     And I should see my category's name
 
-  # Scenario: Editing an account
-  #   Given I have an account named "wallet"
-  #   And I am on the accounts page
-  #   Then I can edit my account and change its name for "checking"
-  #   And I am on the accounts page
+  Scenario: Editing a category
+    Given I have a category named "Supermarket"
+    And I am on the categories page
+    Then I can edit my category and change its name for "Supermercado"
+    And I am on the categories page
   # 
   # @javascript
   # Scenario: Deleting an account

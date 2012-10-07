@@ -8,5 +8,16 @@
 		float: left;
 		padding: 10px 15px;
 		margin: 10px;
+		
+		.actions {
+			display: inline-block;
+			border-left: 1px solid white;
+			padding: 0 5px;
+		}
+		
+		form {
+			color: black;
+			margin: 0;
+		}
 	}
 }

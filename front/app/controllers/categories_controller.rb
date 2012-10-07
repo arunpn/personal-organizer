@@ -15,4 +15,14 @@ class CategoriesController < ApplicationController
     end
     redirect_to categories_path
   end
+  
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(params[:category])
+      flash[:notice] = "Category successfully updated"
+    else
+      flash[:error] = "Can't update category"
+    end
+    redirect_to categories_path
+  end
 end
