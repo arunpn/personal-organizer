@@ -31,6 +31,7 @@ end
 
 package 'libxslt-dev'
 package 'libxml2-dev'
+package 'libfontconfig-dev'
 
 script "install phantom js 1.6.1" do
   interpreter "bash"

@@ -9,15 +9,17 @@
     </div>
     <%= image_tag 'finances.jpeg', class: 'welcome_image' %>
   </div>
-  <div class="span6">
-    <div id="sign_up" class="well">
-      <h2>Sign Up</h2>
-      <%= simple_form_for("user", url: user_registration_path, html: { class: 'form-horizontal' }) do |f| %>
-        <%= f.input :email, type: :email %>
-        <%= f.input :password, type: :password %>
-        <%= f.input :password_confirmation, type: :password %>
-        <%= f.button :submit, 'Sign up', class: 'btn-large' %>
-      <% end %>
-    </div>
-  </div>
+	<% unless user_signed_in? %>
+	  <div class="span6">
+	    <div id="sign_up" class="well">
+	      <h2>Sign Up</h2>
+	      <%= simple_form_for("user", url: user_registration_path, html: { class: 'form-horizontal' }) do |f| %>
+	        <%= f.input :email, type: :email %>
+	        <%= f.input :password, type: :password %>
+	        <%= f.input :password_confirmation, type: :password %>
+	        <%= f.button :submit, 'Sign up', class: 'btn-large' %>
+	      <% end %>
+	    </div>
+	  </div>
+	<% end %>
 </div>
