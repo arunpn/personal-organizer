@@ -4,8 +4,8 @@ An application to keep track of user transaction and accounts's balances.
 
 ## Developers
 
+* Javiera Born: javieraborn@gmail.com
 * Felipe Espinoza: fespinoz@dcc.uchile.cl
-<!-- * Javiera Born: javieraborn@gmail.com -->
 
 ## Development Environment
 
