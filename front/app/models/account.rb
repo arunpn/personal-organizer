@@ -21,4 +21,13 @@ class Account < ActiveRecord::Base
     end
     invalid_transactions
   end
+  
+  def self.find_by_user!(account_id, user)
+    results = Account.where(id: account_id, user_id: user.id)
+    if results.empty?
+      raise ActiveRecord::RecordNotFound
+    else
+      results.first
+    end
+  end
 end

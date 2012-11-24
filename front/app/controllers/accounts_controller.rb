@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = Account.find(params[:id])
+    @account = Account.find_by_user!(params[:id], current_user)
     @transactions = @account.transactions.page(params[:page])
   end
 
@@ -25,11 +25,11 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.find_by_user!(params[:id], current_user)
   end
 
   def update
-    @account = Account.find(params[:id])
+    @account = Account.find_by_user!(params[:id], current_user)
     if @account.update_attributes(params[:account])
       flash[:notice] = "Account updated successfully"
       redirect_to accounts_path
@@ -39,7 +39,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account = Account.find(params[:id])
+    @account = Account.find_by_user!(params[:id], current_user)
     @account.destroy
     flash[:notice] = "Account successfully destroyed."
     redirect_to accounts_path
