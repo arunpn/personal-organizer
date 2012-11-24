@@ -4,7 +4,6 @@ An application to keep track of user transaction and accounts's balances.
 
 ## Developers
 
-* Javiera Born: javieraborn@gmail.com
 * Felipe Espinoza: fespinoz@dcc.uchile.cl
 
 ## Development Environment
@@ -66,6 +65,7 @@ that sets your system ruby version as 1.9.3 (instead of the default linux's 1.8.
 Then, to install the mysql dump with example data for the project, just run:
 
 ```
+cd /personal_organizer
 mysql -u root perorg_development < perorg_development.sql
 ```
 
