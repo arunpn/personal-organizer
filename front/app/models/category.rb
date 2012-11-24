@@ -15,6 +15,15 @@ class Category < ActiveRecord::Base
   
   default_scope order(:name) 
   
+  def self.find_by_user!(category_id, user)
+    results = Category.where(id: category_id, user_id: user.id)
+    if results.empty?
+      raise ActiveRecord::RecordNotFound
+    else
+      results.first
+    end
+  end
+  
   private
   
   def prepend_sharp_to_color
@@ -23,7 +32,7 @@ class Category < ActiveRecord::Base
   
   def name_is_uniq_for_user
     similar_categories = Category.where(name: name, user_id: user_id)
-    unless (id.nil? && similar_categories.empty?) || (id.present? && similar_categories.count == 1)
+    unless (id.present? && similar_categories.count == 1) || similar_categories.empty?
       errors.add(:name, "must be uniq")
     end
   end

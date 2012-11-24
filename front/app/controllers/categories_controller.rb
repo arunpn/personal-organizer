@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
   
   def update
-    @category = Category.find(params[:id])
+    @category = Category.find_by_user!(params[:id], current_user)
     if @category.update_attributes(params[:category])
       flash[:notice] = "Category successfully updated"
     else
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   end
   
   def destroy
-    @category = Category.find(params[:id])
+    @category = Category.find_by_user!(params[:id], current_user)
     if @category.destroy
       flash[:notice] = "Category successfully deleted"
     else

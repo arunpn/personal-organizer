@@ -7,7 +7,7 @@ describe Category do
   it { should validate_presence_of(:color) }
   it { should validate_presence_of(:user_id) }
   
-  describe "#name", :wip do
+  describe "#name" do
     it "should be unique for a user" do
       user = create(:user)
       category1 = create(:category, name: 'clothing', user: user)
@@ -20,6 +20,11 @@ describe Category do
       category = create(:category, name: 'clothing', user: user)
       category.should be_valid
     end
+    
+    # TODO test when the category
+    # - exists before
+    # - dont exist before
+    # - i don't rename category
   end
 
   describe "#color=" do
